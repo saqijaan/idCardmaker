@@ -1,0 +1,115 @@
+*{
+    box-sizing: border-box;
+}
+page[size="A4"] {
+  background: white;
+  height: 21cm !important;
+  width: auto;
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 0.5cm;
+}
+@page { 
+    size: landscape;
+    orientation: landscape;
+    height: 21cm !important;
+    width: 29.7cm !important;
+}
+@media print {
+  body, page[size="A4"] {
+    margin: 0;
+    width: 29.7cm !important;
+  }
+  .id-card{
+      border: 1px solid black;
+      box-shadow: none;
+      padding: 2px;
+  }
+}
+.id-card{
+    width: 2.25in !important;
+    height: 3.75in !important;
+    box-shadow: 1px 1px 10px black;
+    margin: 10px;
+    position: relative;
+    display: block;
+    float: left;
+    background-blend-mode: hard-light;
+}
+.id-card .card-top {
+    margin: 0;
+    padding: 0;
+}
+.id-card .card-top img{
+    width: 100%;
+    height: 0.5in;
+}
+.id-card .company-logo{
+    margin: 0;
+    padding: 0;
+    margin-top: -17px;
+}
+.id-card .company-logo img{
+    width: 80%;
+    height: 70px;
+    margin: auto;
+    display: block;
+}
+.id-card .user-info {
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+}
+.user-info .name{
+    color: gray;
+    text-align: center;
+    width: 100%;
+}
+.user-info .user-image img{
+    margin: auto;
+    display: block;
+    width: 0.7in;
+    height: 0.7in;
+    border-radius: 5px;
+}
+
+.id-card .card-bottom{
+    position: absolute;
+    bottom: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.id-card .card-bottom img{
+    width: 100%;
+    height: 0.5in;
+    transform: rotate(180deg);
+}
+
+/* Back Side design */
+.id-card .card-no{
+    width: 100% !important;
+    height: 30px;
+    background-color: rgb(9, 138, 189);
+    display: block;
+    margin-top: 10px;
+    padding: 5px;
+    font-weight: bold;
+    color: white;
+    text-align: center;
+}
+.user-info svg{
+    margin: auto;
+    margin-top: 20px;
+    width: 60% !important;
+    height: 30px !important;
+    display: block;
+    text-align: center;
+}
+.data.bg{
+    background-color: rgb(9, 138, 189);
+    display: block;
+    height: 1in;
+    padding: 5px 5px;
+    color: white;
+}
