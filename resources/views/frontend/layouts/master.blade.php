@@ -43,8 +43,11 @@
               </a>
               <div class="dropdown-menu bg-dark" aria-labelledby="navbarDropdown">
                   @auth
-                    <a class="dropdown-item text-primary" href="{{ route('logout') }}">Dashboard</a>
-                    <a class="dropdown-item text-primary" href="{{ route('logout') }}">Logout</a>
+                    <a class="dropdown-item text-primary" href="{{ route('user.home') }}">Dashboard</a>
+                    <form action="{{ route('logout') }}" method="POST" id="logout">
+                      @csrf
+                      <a class="dropdown-item btn btn-primary text-primary" onclick="event.preventDefault(); document.getElementById('logout').submit()" href="#">Logout</a>
+                    </form>
                   @else
                     <a class="dropdown-item text-primary" href="{{ route('login') }}">Login</a>
                     <a class="dropdown-item text-primary" href="{{ route('register') }}">Register</a>

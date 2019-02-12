@@ -18,12 +18,12 @@ class CreateEmployesTable extends Migration
 
             $table->integer('user_id')->index('user_id');
             
+            $table->string('uuid')->nullable();
             $table->string('name',15);
-            $table->string('email',50);
+            $table->string('department',50);
             $table->string('designation',50);
             $table->string('phone',15);
-            $table->string('address');
-            $table->string('image');
+            $table->string('image')->nullable();
 
             
             $table->timestamps();

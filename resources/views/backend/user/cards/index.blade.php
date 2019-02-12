@@ -23,7 +23,7 @@
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Designation</th>
-                            <th>Address</th>
+                            <th>Department</th>
                             <th>Action</th>
                         </thead>
                         <tbody>
@@ -44,7 +44,7 @@
                                     <td>{{ $employe->email }}</td>
                                     <td>{{ $employe->phone }}</td>
                                     <td>{{ $employe->designation }}</td>
-                                    <td style="word-break: break-word;">{{ $employe->address }}</td>
+                                    <td>{{ $employe->department }}</td>
                                     <td>
                                         <a href="{{ route('employe.edit',$employe->id) }}" class="h2 text-primary" title="Edit Record"><i class="fa fa-edit"></i> </a>
                                         <a href="#" class="h2 text-danger" onclick="return cdelete('#{{ md5($employe->id) }}')" title="Delete Record"><i class="fa fa-trash"></i> </a>

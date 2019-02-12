@@ -17,7 +17,7 @@ class EmployeController extends Controller
      */
     public function index()
     {
-        $employes = Employe::all();
+        $employes = auth()->user()->employes;
         return view('backend.user.cards.index',compact('employes'));
     }
 
@@ -58,11 +58,12 @@ class EmployeController extends Controller
         foreach ($records as $record) {
             $employe = new Employe;
             $employe->user_id       = auth()->Id();
-            $employe->name          = $record[0];
-            $employe->designation   = $record[1];
-            $employe->phone         = $record[2];
-            $employe->email         = $record[3];
-            $employe->address       = $record[4];
+            $employe->uuid          = $record[0];
+            $employe->name          = $record[1];
+            $employe->department    = $record[2];
+            $employe->designation   = $record[3];
+            $employe->phone         = $record[4];
+            $employe->image         = isset($record[5])?$record[5]:null;
             $employe->save();
         }
         session()->flash('alert-success','CSV Uploaded.');
@@ -80,10 +81,9 @@ class EmployeController extends Controller
     {
         $rules = [
             'name'          => 'required',
-            'email'         => 'required|email',
-            'phone'         => 'required',
+            'department'    => 'required',
             'designation'   => 'required',
-            'address'       => 'required',
+            'phone'         => 'required',
             'image'         => 'required|image',
         ];
         $this->validate($request,$rules);
@@ -102,7 +102,7 @@ class EmployeController extends Controller
             $data
         );
         session()->flash('alert-success','Record Saved');
-        return back();
+        return redirect( route('employe.index') );
     }
 
     /**
@@ -160,10 +160,9 @@ class EmployeController extends Controller
     {
         $rules = [
             'name'          => 'required',
-            'email'         => 'required|email',
             'phone'         => 'required',
             'designation'   => 'required',
-            'address'       => 'required',
+            'department'    => 'required',
             'image'         => 'required_without:old_image|image',
         ];
         $this->validate($request,$rules);
@@ -227,11 +226,12 @@ class EmployeController extends Controller
     
             foreach($collection as $row) {
                 fputcsv($file,[
+                    $row->uuid,
                     $row->name,
+                    $row->department,
                     $row->designation,
                     $row->phone,
-                    $row->email,
-                    $row->address
+                    $row->image
                 ]);
             }
             fclose($file);
